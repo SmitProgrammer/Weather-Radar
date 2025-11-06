@@ -22,13 +22,18 @@ def health():
 def get_latest_radar():
     """Get the latest MRMS radar data"""
     try:
+        print("Fetching latest radar data...")
         data = mrms_service.get_latest_radar_data()
         if data is None:
+            print("No radar data available")
             return jsonify({'error': 'No radar data available'}), 404
         
+        print(f"Returning radar data with {data.get('metadata', {}).get('count', 0)} features")
         return jsonify(data)
     except Exception as e:
         print(f"Error fetching radar data: {str(e)}")
+        import traceback
+        traceback.print_exc()
         return jsonify({'error': str(e)}), 500
 
 @app.route('/api/radar/info', methods=['GET'])

@@ -129,7 +129,9 @@ class MRMSService:
         """Process GRIB2 file and extract radar data"""
         try:
             # Open GRIB2 file with xarray and cfgrib
-            ds = xr.open_dataset(grib_file_path, engine='cfgrib')
+            # Use chunks to reduce memory usage
+            ds = xr.open_dataset(grib_file_path, engine='cfgrib', 
+                                backend_kwargs={'errors': 'ignore'})
             
             # Get reflectivity data (variable name may vary)
             # Common names: 'unknown', 'refc', 'reflectivity'
@@ -143,12 +145,15 @@ class MRMSService:
                 # Just use the first variable
                 var_name = list(ds.data_vars)[0]
             
+            print(f"Processing variable: {var_name}")
             reflectivity = ds[var_name]
             
             # Get coordinates
             lats = ds['latitude'].values
             lons = ds['longitude'].values
             values = reflectivity.values
+            
+            print(f"Data shape: {values.shape}, Lat range: [{lats.min():.2f}, {lats.max():.2f}], Lon range: [{lons.min():.2f}, {lons.max():.2f}]")
             
             # Get timestamp
             if 'time' in ds.coords:
@@ -167,6 +172,8 @@ class MRMSService:
             
         except Exception as e:
             print(f"Error processing GRIB file: {e}")
+            import traceback
+            traceback.print_exc()
             raise
     
     def convert_to_geojson(self, data):

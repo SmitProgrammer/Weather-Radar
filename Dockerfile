@@ -34,4 +34,5 @@ ENV FLASK_ENV=production
 EXPOSE 5000
 
 # Start the backend (serves API and static frontend)
-CMD ["gunicorn", "-b", "0.0.0.0:5000", "backend.app:app"]
+# Increase timeout to 120s for GRIB processing
+CMD ["gunicorn", "-b", "0.0.0.0:5000", "--timeout", "120", "--workers", "1", "backend.app:app"]
