@@ -9,6 +9,13 @@ RUN npm run build
 # --- Build backend ---
 FROM python:3.11-slim AS backend
 WORKDIR /app
+
+# Install system dependencies for cfgrib and GRIB2 processing
+RUN apt-get update && apt-get install -y \
+    libeccodes-dev \
+    libeccodes-tools \
+    && rm -rf /var/lib/apt/lists/*
+
 COPY backend/ ./backend/
 COPY backend/requirements.txt ./backend/requirements.txt
 RUN pip install --no-cache-dir -r ./backend/requirements.txt
