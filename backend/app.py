@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, send_from_directory
 from flask_cors import CORS
 import os
 from dotenv import load_dotenv
@@ -6,7 +6,9 @@ from .mrms_service import MRMSService
 
 load_dotenv()
 
-app = Flask(__name__)
+# Initialize Flask with static folder
+static_folder = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static')
+app = Flask(__name__, static_folder=static_folder, static_url_path='')
 CORS(app)
 
 mrms_service = MRMSService()
@@ -40,16 +42,13 @@ def get_radar_info():
 
 
 # Serve React static files
-from flask import send_from_directory
-
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def serve_react(path):
-    static_folder = os.path.join(app.root_path, 'static')
-    if path != "" and os.path.exists(os.path.join(static_folder, path)):
-        return send_from_directory(static_folder, path)
+    if path != "" and os.path.exists(os.path.join(app.static_folder, path)):
+        return send_from_directory(app.static_folder, path)
     else:
-        return send_from_directory(static_folder, 'index.html')
+        return send_from_directory(app.static_folder, 'index.html')
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
