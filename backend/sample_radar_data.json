@@ -1,0 +1,140 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          234.5949998688357,
+          54.995
+        ]
+      },
+      "properties": {
+        "reflectivity": 8.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          234.62499986797843,
+          54.995
+        ]
+      },
+      "properties": {
+        "reflectivity": 8.2
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          234.68499986626387,
+          54.995
+        ]
+      },
+      "properties": {
+        "reflectivity": 6.8
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          234.71499986540658,
+          54.995
+        ]
+      },
+      "properties": {
+        "reflectivity": 8.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          234.7449998645493,
+          54.995
+        ]
+      },
+      "properties": {
+        "reflectivity": 7.8
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          236.42499981654146,
+          54.995
+        ]
+      },
+      "properties": {
+        "reflectivity": 9.8
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          236.6649998096832,
+          54.995
+        ]
+      },
+      "properties": {
+        "reflectivity": 5.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          236.6949998088259,
+          54.995
+        ]
+      },
+      "properties": {
+        "reflectivity": 5.7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          236.72499980796863,
+          54.995
+        ]
+      },
+      "properties": {
+        "reflectivity": 6.2
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          237.62499978225014,
+          54.995
+        ]
+      },
+      "properties": {
+        "reflectivity": 8.0
+      }
+    }
+  ],
+  "metadata": {
+    "timestamp": "2025-11-06T05:16:00.000000000",
+    "count": 406396,
+    "product": "MRMS Reflectivity at Lowest Altitude"
+  }
+}
