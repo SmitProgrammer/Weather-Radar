@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: weather-radar
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    region: oregon
+    branch: main
+    healthCheckPath: /api/health
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: PYTHONUNBUFFERED
+        value: 1
