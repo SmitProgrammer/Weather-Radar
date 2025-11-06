@@ -2,7 +2,7 @@ from flask import Flask, jsonify
 from flask_cors import CORS
 import os
 from dotenv import load_dotenv
-from mrms_service import MRMSService
+from .mrms_service import MRMSService
 
 load_dotenv()
 
